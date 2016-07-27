@@ -12,17 +12,17 @@
     "url": "http://github.com/nodejitsu/require-analyzer.git"
   },
   "dependencies": {
-    "colors": "1.x.x",
-    "optimist": "0.6.x",
-    "semver": "5.3.x",
-    "winston": "2.2.x",
-    "detective": "4.3.x",
-    "resolve": "1.1.x",
+    "colors": "0.x.x",
+    "optimist": "0.3.x",
+    "semver": "1.0.x",
+    "winston": "0.6.x",
+    "detective": "0.0.x",
+    "resolve": "0.2.x",
     "eyes": "0.1.x",
-    "read-installed": "4.0.x"
+    "read-installed": "0.0.x"
   },
   "devDependencies": {
-    "vows": "0.8.x"
+    "vows": "0.6.x"
   },
   "main": "./lib/require-analyzer",
   "bin": {
