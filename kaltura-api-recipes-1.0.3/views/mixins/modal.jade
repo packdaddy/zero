@@ -1,0 +1,53 @@
+mixin modal(id, title, submit)
+  .modal.fade(id=id, ng-controller=id, tabindex="-1")
+    .modal-dialog
+      form.modal-content(ng-submit="submit()" name="form")
+        .modal-header
+          button(type="button"
+                 class="close"
+                 data-dismiss="modal"
+                 aria-label="Close")
+            span(aria-hidden="true") &times;
+          .modal-title
+            h3 #{title}
+        .modal-body
+          .form-group(ng-repeat="input in inputs" ng-show="!input.hidden")
+            label(ng-bind="input.label")
+            input.form-control(
+                ng-if="input.type === 'text' || input.type === 'number' || input.type === 'password' || input.type === 'email'"
+                name="input.model"
+                type="{{ input.type }}"
+                ng-required="input.required"
+                ng-model="responses[input.model]")
+            textarea.form-control(
+                ng-if="input.type === 'textarea'"
+                ng-model="responses[input.model]")
+            div(ng-if="input.type === 'radio'"
+                ng-repeat="option in input.options")
+              input(type="radio" ng-model="responses[input.model]" name="{{ input.model }}" ng-value="option.value")
+              span &nbsp;&nbsp;
+              span {{ option.label }}
+            .dropdown(ng-if="input.type === 'select'")
+              a.btn.btn-link.form-control.dropdown-toggle.text-left(data-toggle="dropdown")
+                span(ng-bind="selectedOption")
+                i.fa.fa-right.fa-caret-down
+              ul.dropdown-menu
+                li
+                  .input-group
+                    span.input-group-addon
+                      i.fa.fa-search
+                    input.form-control(type="text" ng-model="optionFilter")
+                li(ng-repeat="opt in input.options | filter: optionFilter")
+                  a(ng-click="responses[input.model] = opt.value; $parent.selectedOption = opt.label" ng-bind="opt.label")
+          if block
+            block
+        .modal-footer
+          .text-left
+            .alert.alert-success(ng-if="alert.success") {{ alert.success }}
+            .alert.alert-info(ng-if="alert.info") {{ alert.info }}
+            .alert.alert-warning(ng-if="alert.warning") {{ alert.warning }}
+            .alert.alert-danger(ng-if="alert.danger") {{ alert.danger }}
+          button.btn.btn-success(ng-if="!alert.success" type="submit" ng-disabled="loading") 
+            span(ng-show="!loading") #{submit}
+            span(ng-show="loading")
+              i.fa.fa-spin.fa-refresh
