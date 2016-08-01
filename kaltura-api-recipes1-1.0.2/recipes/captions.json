@@ -1,0 +1,87 @@
+{
+  "name": "captions",
+  "title": "Captions",
+  "icon": "cc",
+  "description": "Learn how to upload a caption file and perform in-video searches",
+  "recipe_steps": [
+    {
+      "title": "Select a Media Entry",
+      "tip": "Choose a video from your library to add captions to. You can then use the page below to upload an SRT file to Kaltura. If you don't have an SRT file handy, you can [download a sample SRT file here](/sample_captions.srt)\n\nJavaScript clients can make use of the [jQuery fileupload plugin](https://github.com/kaltura/jQuery-File-Upload). Others should utilize the ```uploadToken``` service.",
+      "code_snippet": "UploadCaptions",
+      "inputs": [
+        {
+          "type": "text",
+          "hidden": true,
+          "name": "uiConf"
+        },
+        {
+          "type": "select-chosen",
+          "label": "Media Entry",
+          "name": "entryId",
+          "dynamic_choices": {
+            "service": "media",
+            "action": "list",
+            "map": {
+              "value": "id",
+              "label": "name"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Attaching the Caption File",
+      "tip": "Once you've uploaded the file, you'll need to attach it to the video using ```captionAsset.add``` and ```captionAsset.setContent```",
+      "code_snippet": "attachCaptions",
+      "inputs": []
+    },
+    {
+      "title": "Searching through Captions",
+      "tip": "You can use ```captionAssetItem.search``` to search for scenes within your videos.",
+      "page": 1,
+      "code_snippet": "searchCaptionAssetItem",
+      "inputs": [
+        {
+          "type": "text",
+          "label": "Query",
+          "default": "support",
+          "name": "contentLike"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "view": "UploadCaptions"
+    },
+    {
+      "view": "CaptionSearch",
+      "data": {
+        "action": "searchCaptionAssetItem"
+      }
+    }
+  ],
+  "views": [
+    "KalturaMediaEntry",
+    "UploadCaptions",
+    "CaptionUploadDone",
+    "CaptionsAttached",
+    "CaptionSearch"
+  ],
+  "actions": [
+    {
+      "service": "media",
+      "action": "get",
+      "view": "KalturaMediaEntry"
+    },
+    {
+      "service": "captionAssetItem",
+      "action": "search",
+      "view": "CaptionSearch"
+    },
+    {
+      "action": "attachCaptions",
+      "view": "CaptionsAttached"
+    }
+  ]
+}
