@@ -1,6 +1,6 @@
 {
   "name": "kaltura-api-recipes",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "jade": "^1.11.0",
-    "jsonwebtoken": "^5.7.0",
+    "jsonwebtoken": "^7.1.9",
     "kaltura-codegen": "git+https://github.com/kaltura/kaltura-api-codegen.git",
     "kaltura-schema": "git+https://github.com/bobby-brennan/kaltura-schema.git",
     "kaltura-spec-converter": "git+https://github.com/bobby-brennan/kaltura-spec-converter.git",
@@ -36,16 +36,16 @@
     "lucy-api-portal": "git+ssh://git@lucy-codegen:bobby-brennan/lucy-api-portal.git",
     "lucy-codegen": "https://github.com/lucybot/lucy-codegen",
     "mocha": "^2.5.3",
-    "remove-markdown": "0.0.6",
+    "remove-markdown": "0.1.0",
     "request": "^2.74.0",
-    "requestify": "^0.1.17",
+    "requestify": "^0.2.2",
     "sitemap": "^1.8.1",
     "strapping": "^1.6.2"
   },
   "devDependencies": {
     "chai": "^3.2.0",
     "cheerio": "^0.20.0",
-    "mocha": "^2.2.5",
+    "mocha": "^3.0.2",
     "strapping": "^1.5.2"
   }
 }
