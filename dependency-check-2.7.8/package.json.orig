@@ -1,6 +1,6 @@
 {
   "name": "dependency-check",
-  "version": "2.7.8",
+  "version": "2.6.0",
   "description": "checks which modules you have used in your code and then makes sure they are listed as dependencies in your package.json",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
   },
   "author": "max ogden",
   "dependencies": {
-    "async": "^2.0.1",
+    "async": "^1.0.0",
     "builtins": "^1.0.0",
     "detective": "^4.0.0",
     "minimist": "^1.2.0",
@@ -21,7 +21,7 @@
     "debug": "^2.2.0"
   },
   "devDependencies": {
-    "standard": "^8.0.0-beta.5"
+    "standard": "^7.1.2"
   },
   "directories": {
     "test": "test"
